@@ -1,0 +1,21 @@
+{
+	"template": "logs-*",
+	"settings": {
+		"index.mapping.coerce": "true",
+		"index.mapping.ignore_malformed": true,
+		"index.mapper.dynamic": false
+	},
+	"mappings": {
+		"project_name": {
+			"properties": {
+				"timestamp": {
+					"type": "date"
+				},
+				"message": {
+					"type": "string",
+					"index": "not_analyzed"
+				}
+			}
+		}
+	}
+}

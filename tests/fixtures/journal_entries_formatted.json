@@ -1,0 +1,14 @@
+[
+    {
+        "timestamp": 1481803325000,
+        "message": "> me@1.12.10 start /app/app/src"
+    },
+    {
+        "timestamp": 1481803325000,
+        "message": "> node server.js"
+    },
+    {
+        "timestamp": 1481803325000,
+        "message": "NODE_ENV: dev"
+    }
+]

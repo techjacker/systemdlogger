@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+
+  elasticsearch:
+    image: elasticsearch:2
+    ports:
+      - 9200:9200
+    environment:
+      - ENV=dev
+
+
+# docker run --privileged -i -t minimum2scp/systemd:latest /bin/bash

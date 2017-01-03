@@ -1,0 +1,11 @@
+{
+    "systemd": {
+        "unit": "webserver"
+    },
+    "backends": {
+        "es": {
+            "doctype": "webserver",
+            "hosts": ["localhost"]
+        }
+    }
+}

@@ -1,0 +1,23 @@
+[{
+	"MESSAGE": "> me@1.12.10 start /app/app/src",
+	"_SYSTEMD_SLICE": "system.slice",
+	"SYSLOG_FACILITY": 3,
+	"_PID": 25397,
+	"_TRANSPORT": "stdout",
+	"_BOOT_ID": "5181c480-e7a8-422c-9272-46d9781e0ae8",
+	"PRIORITY": 6,
+	"SYSLOG_IDENTIFIER": "npm",
+	"_HOSTNAME": "default-ubuntu-1504-local",
+	"_MACHINE_ID": "8a74b1a4-feaa-9b63-d3a7-92d156faf714",
+	"_SYSTEMD_UNIT": "nu-app.service",
+	"_CMDLINE": "npm                                         ",
+	"__REALTIME_TIMESTAMP": "2016, 12, 15, 12, 2, 5, 149054",
+	"_SYSTEMD_CGROUP": "/system.slice/nu-app.service",
+	"__CURSOR": "s=1d844d85ad5940adba31b25fd17a73ac;i=3a6;b=5181c480e7a8422c927246d9781e0ae8;m=322e2a20;t=543b138d28f7e;x=6fa8a9d8540c59d6",
+	"_COMM": "npm",
+	"_GID": 1000,
+	"_UID": 1000,
+	"_EXE": "/usr/local/nodejs-binary-4.1.2/bin/node",
+	"__MONOTONIC_TIMESTAMP": "0, 841, 886240 5181c480-e7a8-422c-9272-46d9781e0ae8",
+	"_CAP_EFFECTIVE": "0"
+}]
