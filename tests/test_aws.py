@@ -1,5 +1,5 @@
 import pytest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 from systemdlogger.aws import AWSLogger
 import botocore
 
@@ -26,21 +26,24 @@ allowed_services = [
 ]
 
 
+@pytest.mark.parametrize(('backend'), allowed_services)
 class TestInit:
 
-    @pytest.mark.parametrize(('backend'), allowed_services)
-    def test_init(self, backend, aws_params):
-        with patch.object(AWSLogger, 'load_metadata') as load_metadata:
-            with patch.object(AWSLogger, 'create_client') as create_client:
-                aws = AWSLogger(backend, **aws_params)
-                assert aws.aws_service == backend
-                create_client.assert_called_once_with(**aws_params)
-                assert load_metadata.call_count == 1
+    def setup_method(self, method):
+        self.AWSLogger = AWSLogger
+        self.AWSLogger.load_metadata = Mock(return_value=metadata())
 
-    @pytest.mark.parametrize(('backend'), allowed_services)
-    def test_init_aws(self, backend, aws_params, metadata):
-        with patch.object(AWSLogger, 'load_metadata') as load_metadata:
-            load_metadata.returns = metadata
-            logger = AWSLogger(backend, **aws_params)
-            assert isinstance(
-                logger.client, botocore.client.BaseClient)
+    def teardown_method(self, method):
+        self.AWSLogger.load_metadata.restore()
+
+    def test_init_load_metadata(self, backend, aws_params):
+        with patch.object(self.AWSLogger, 'create_client') as create_client:
+            aws = self.AWSLogger(backend, **aws_params)
+            assert aws.aws_service == backend
+            create_client.assert_called_once_with(**aws_params)
+            assert self.AWSLogger.load_metadata.call_count == 1
+
+    def test_init_create_client(self, backend, aws_params, metadata):
+        logger = self.AWSLogger(backend, **aws_params)
+        assert isinstance(
+            logger.client, botocore.client.BaseClient)
