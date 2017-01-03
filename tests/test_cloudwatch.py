@@ -10,7 +10,7 @@ def params():
     return {
         'log_group_name': 'log_group_name',
         'log_stream_name': 'log_stream_name',
-        'seq_tok_filename': 'seq_tok_filename',
+        'seq_tok_filepath': 'seq_tok_filepath',
     }
 
 
@@ -50,7 +50,7 @@ class TestInitCloudwatch:
             init_params.get('aws_params', {})
         )
         self.CloudwatchLogger.setup_logs.assert_called_once_with(
-            init_params['seq_tok_filename'],
+            init_params['seq_tok_filepath'],
             init_params['log_group_name'],
             init_params['log_stream_name']
         )

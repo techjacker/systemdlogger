@@ -9,24 +9,21 @@ from systemdlogger.log import log
 class CloudwatchLogger(AWSLogger, PluginBase):
     def __init__(
         self,
-        seq_tok_filename,
+        seq_tok_filepath,
         log_group_name,
         log_stream_name,
         aws_params={}
     ):
         super().__init__('cloudwatch', aws_params)
-        self.setup_logs(seq_tok_filename, log_group_name, log_stream_name)
+        self.setup_logs(seq_tok_filepath, log_group_name, log_stream_name)
 
-    def setup_logs(self, seq_tok_filename, log_group_name, log_stream_name):
-        self.seq_token_path = os.path.join(
-            os.getcwd(),
-            seq_tok_filename
-            # 'aws_seq_tok-%s-%s.txt' % (project, app)
-        )
-        self.log_group_name = log_group_name
-        # self.log_group_name = '%s-%s' % (project, env)
+    def setup_logs(self, seq_tok_filepath, log_group_name, log_stream_name):
+        self.seq_token_path = self.set_seq_token_path(
+            seq_tok_filepath, log_group_name, log_stream_name)
         self.instance_id = self.get_instance_id()
+        self.log_group_name = log_group_name
         self.log_stream_name = '%s-%s' % (log_stream_name, self.instance_id)
+        # self.log_group_name = '%s-%s' % (project, env)
         # self.log_stream_name = '%s-%s' % (app, self.instance_id)
 
         try:
@@ -41,6 +38,13 @@ class CloudwatchLogger(AWSLogger, PluginBase):
             )
         except botocore.exceptions.ClientError:
             pass
+
+    @staticmethod
+    def set_seq_token_path(filepath, log_group_name, log_stream_name):
+        return filepath if filepath else os.path.join(
+            os.getcwd(),
+            'aws_seq_tok-%s-%s.txt' % (log_group_name, log_stream_name)
+        )
 
     def get_last_token(self):
         try:

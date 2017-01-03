@@ -6,7 +6,7 @@ with open('README.rst') as f:
 setup(
     name='systemdlogger',
     version='0.1.0',
-    description='Exports systemd logs to an external service, eg cloudwatch.',
+    description='Exports systemd logs to cloudwatch/elasticsearch.',
     long_description=long_description,
     url='https://github.com/techjacker/systemdlogger',
     license='MIT',

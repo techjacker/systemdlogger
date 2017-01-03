@@ -13,15 +13,14 @@ def init_params():
 
 
 def test_init(init_params):
-    # with patch.object(es.EsLog, 'init'):
+
     with patch.object(es.connections, 'create_connection'):
 
         elasticsearch_logger = es.ElasticsearchLogger(**init_params)
+
         assert issubclass(es.ElasticsearchLogger, PluginBase)
         assert isinstance(elasticsearch_logger, PluginBase)
         assert elasticsearch_logger.doctype == init_params['doctype']
-
-        # assert es.EsLog.init.call_count == 0
 
         m = Mock()
         m(hosts=init_params['hosts'])

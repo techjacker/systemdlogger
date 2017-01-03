@@ -1,12 +1,13 @@
 {
     "systemd": {
-        "unit": "webserver"
+        "unit": "webserver",
+        "journal_cursor_filepath": "/optional/path/to/file.txt"
     },
     "backends": {
         "cloudwatch": {
             "log_group_name": "log_group_name",
             "log_stream_name": "log_stream_name",
-            "seq_tok_filename": "cloudwatch_seq_tok-project-app.txt",
+            "seq_tok_filepath": "/full/path/cloudwatch_seq_tok-project-app.txt",
             "aws_params": {
                 "access_key": "access_key",
                 "secret_key": "secret_key",

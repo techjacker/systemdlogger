@@ -17,9 +17,7 @@ class Runner:
     ):
         config = self.load_config(config_path)
 
-        self.journal = JournalExporter(
-            unit=config['systemd']['unit']
-        )
+        self.journal = JournalExporter(**config['systemd'])
 
         if len(config['backends']):
             self.loggers = [
