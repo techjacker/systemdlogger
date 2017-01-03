@@ -10,12 +10,6 @@ make test-integration
 -----------------------------------------------------------
 -----------------------------------------------------------
 
-make aws creds params optional (cloudwatch)
-	- switch to **kwargs style?
-
------------------------------------------------------------
------------------------------------------------------------
-
 bulk save
 	combine entries with same timestamp into single doctype
 

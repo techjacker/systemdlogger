@@ -12,16 +12,13 @@ class AWSLogger():
         '/latest/dynamic/instance-identity/document'
     )
 
-    def __init__(self, aws_service, access_key, secret_key, region):
+    # def __init__(self, aws_service, access_key, secret_key, region):
+    def __init__(self, aws_service, aws_params={}):
         if aws_service not in AWSLogger.services:
             raise Exception('logger must be one of %s' % AWSLogger.services)
         self.aws_service = aws_service
         self.metadata = self.load_metadata()
-        self.client = self.create_client(
-            access_key=access_key,
-            secret_key=secret_key,
-            region=region
-        )
+        self.client = self.create_client(**aws_params)
 
     def create_client(self, access_key, secret_key, region):
         if access_key and secret_key and region:

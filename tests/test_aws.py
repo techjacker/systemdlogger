@@ -27,7 +27,7 @@ allowed_services = [
 
 
 @pytest.mark.parametrize(('backend'), allowed_services)
-class TestInit:
+class TestInitAWS:
 
     def setup_method(self, method):
         self.AWSLogger = AWSLogger
@@ -38,12 +38,17 @@ class TestInit:
 
     def test_init_load_metadata(self, backend, aws_params):
         with patch.object(self.AWSLogger, 'create_client') as create_client:
-            aws = self.AWSLogger(backend, **aws_params)
+            aws = self.AWSLogger(backend, aws_params)
             assert aws.aws_service == backend
             create_client.assert_called_once_with(**aws_params)
             assert self.AWSLogger.load_metadata.call_count == 1
 
+    def test_init_without_aws_params(self, backend):
+        with patch.object(self.AWSLogger, 'create_client'):
+            aws = self.AWSLogger(backend)
+            assert aws.aws_service == backend
+
     def test_init_create_client(self, backend, aws_params, metadata):
-        logger = self.AWSLogger(backend, **aws_params)
+        logger = self.AWSLogger(backend, aws_params)
         assert isinstance(
             logger.client, botocore.client.BaseClient)

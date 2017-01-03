@@ -1,14 +1,12 @@
-from pytest import fixture
+import pytest
 from unittest.mock import patch
 import tests.fixtures.journal as FakeJournalExporter
 from systemdlogger.elasticsearch import ElasticsearchLogger
 
 
-@fixture
-def config_path():
-    return 'tests/fixtures/config_es.json'
-
-
+@pytest.mark.parametrize(('config_path'), [
+    'tests/fixtures/config_es.json'
+])
 class TestRunner:
 
     def setup_method(self, method):

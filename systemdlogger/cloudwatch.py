@@ -12,16 +12,9 @@ class CloudwatchLogger(AWSLogger, PluginBase):
         seq_tok_filename,
         log_group_name,
         log_stream_name,
-        access_key,
-        secret_key,
-        region
+        aws_params={}
     ):
-        super().__init__(
-            'cloudwatch',
-            access_key,
-            secret_key,
-            region
-        )
+        super().__init__('cloudwatch', aws_params)
         self.setup_logs(seq_tok_filename, log_group_name, log_stream_name)
 
     def setup_logs(self, seq_tok_filename, log_group_name, log_stream_name):

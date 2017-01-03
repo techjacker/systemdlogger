@@ -7,9 +7,11 @@
             "log_group_name": "log_group_name",
             "log_stream_name": "log_stream_name",
             "seq_tok_filename": "cloudwatch_seq_tok-project-app.txt",
-            "access_key": "access_key",
-            "secret_key": "secret_key",
-            "region": "region"
+            "aws_params": {
+                "access_key": "access_key",
+                "secret_key": "secret_key",
+                "region": "region"
+            }
         },
         "es": {
             "doctype": "webserver",
