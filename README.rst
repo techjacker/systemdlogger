@@ -1,10 +1,10 @@
 systemdlogger
 =======================
 
-Exports systemd logs to an external service, eg cloudwatch.
+Exports systemd logs to an external service, eg cloudwatch, elasticsearch.
 Use with a cron job.
 Python3+.
 
 ----
 
-This is the README file for the project.
+See README.md for more info.

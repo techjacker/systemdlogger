@@ -1,9 +1,8 @@
 # systemdlogger
 
-Exports systemd logs to an external service, eg cloudwatch, elasticsearch.
-Use with a cron job.
-
-Python3+.
+- Exports systemd logs to an external service, eg cloudwatch, elasticsearch.
+- Use with a cron job.
+- Python 3+
 
 
 -----------------------------------------------------------
@@ -11,26 +10,28 @@ Python3+.
 ## Installation
 
 #### Install Dependencies
+
 [python-systemd](https://github.com/systemd/python-systemd)
-Fedora/RHEL/CentOS
+
 ```
+# Fedora/RHEL/CentOS
 dnf install python-systemd python3-systemd
 ```
-Debian/Ubuntu/Mint
+
+OR
+
 ```
+# Debian/Ubuntu/Mint
 apt-get install python-systemd python3-systemd
 ```
 
 
-#### Install
+#### Install from pip
 ```
 pip install systemdlogger
 ```
 
-
-
 -----------------------------------------------------------
-
 
 ## Usage
 
@@ -61,26 +62,32 @@ myapp-staging/webserver-i045458d
 
 -----------------------------------------------------------
 
-## Development
-
-### Setup
+## Development Setup
 
 ```
 make setup
 source env/bin/activate
 make deps
+```
 
+-----------------------------------------------------------
+
+## Unit Tests
+
+```
 make test
 ```
 
 -----------------------------------------------------------
 
-## Tests
+## Integration Tests
+
+Run against elasticsearch docker container.
 
 ```
-py.test tests -q
+docker-compose up -d
+make test-integration
 ```
-
 
 -----------------------------------------------------------
 

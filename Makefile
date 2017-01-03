@@ -7,9 +7,12 @@ deps:
 	@pip freeze > requirements.txt
 
 test:
-	@py.test tests -q
+	@pytest
+
+test-integration:
+	@pytest -c tox_integration.ini
 
 debug:
-	@py.test --pdb tests -q
+	@pytest --pdb
 
 .PHONY: test setup deps
