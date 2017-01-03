@@ -14,7 +14,7 @@
                 "region": "region"
             }
         },
-        "es": {
+        "elasticsearch": {
             "doctype": "webserver",
             "hosts": ["localhost"]
         }

@@ -3,7 +3,7 @@
         "unit": "webserver"
     },
     "backends": {
-        "es": {
+        "elasticsearch": {
             "doctype": "webserver",
             "hosts": ["localhost"]
         }

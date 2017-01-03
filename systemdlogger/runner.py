@@ -8,7 +8,7 @@ import json
 class Runner:
     loggers = {
         'cloudwatch': CloudwatchLogger,
-        'es': ElasticsearchLogger
+        'elasticsearch': ElasticsearchLogger
     }
 
     def __init__(
