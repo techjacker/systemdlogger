@@ -12,24 +12,22 @@
 [python-systemd](https://github.com/systemd/python-systemd)
 ```
 # Fedora/RHEL/CentOS
-dnf install python-systemd python3-systemd
+$ dnf install python-systemd python3-systemd
 ```
 OR
 ```
 # Debian/Ubuntu/Mint
-apt-get install python-systemd python3-systemd
+$ apt-get install python-systemd python3-systemd
 ```
 
 
 #### Install from pip
-```pip install systemdlogger```
+```$ pip install systemdlogger```
 
 -----------------------------------------------------------
 ## Usage
 
-```Shell
-systemdlogger config.json
-```
+```$ systemdlogger config.json```
 
 #### Recommended Usage - Cron Job Runing Every Minute
 
@@ -61,7 +59,7 @@ systemdlogger config.json
 
 Environment variables will be interpolated when the config is loaded.
 
-```ENV=uat FOO=bar systemdlogger config.json```
+```$ ENV=uat FOO=bar systemdlogger config.json```
 
 ```JavaScript
 // config.json
@@ -86,7 +84,7 @@ Is loaded as:
             "log_group_name": "uat-myapp",
             "log_stream_name": "bar-myservice"
         }
-```JavaScript
+```
 
 
 
@@ -104,16 +102,16 @@ Creates daily indexes for logs, eg:
 ## Development Setup
 
 ```
-make setup
-source env/bin/activate
-make deps
+$ make setup
+$ source env/bin/activate
+$ make deps
 ```
 
 -----------------------------------------------------------
 
 ## Unit Tests
 
-```make test```
+```$ make test```
 
 -----------------------------------------------------------
 
@@ -122,8 +120,8 @@ make deps
 Run against elasticsearch docker container.
 
 ```
-docker-compose up -d
-make test-integration
+$ docker-compose up -d
+$ make test-integration
 ```
 
 
