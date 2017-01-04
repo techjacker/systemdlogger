@@ -14,7 +14,6 @@
 
 ### Later
 
-
 - add retries for failed attempts
 
 - logstash

@@ -3,6 +3,8 @@ from systemdlogger.journal import JournalExporter
 from systemdlogger.cloudwatch import CloudwatchLogger
 from systemdlogger.elasticsearch import ElasticsearchLogger
 import json
+import os
+from string import Template
 
 
 class Runner:
@@ -15,20 +17,21 @@ class Runner:
         self,
         config_path
     ):
-        config = self.load_config(config_path)
+        self.config = self.load_config(config_path)
 
-        self.journal = JournalExporter(**config['systemd'])
+        self.journal = JournalExporter(**self.config['systemd'])
 
-        if len(config['backends']):
+        if len(self.config['backends']):
             self.loggers = [
-                Runner.loggers[backend](**config['backends'][backend])
-                for backend in config['backends']
+                Runner.loggers[backend](**self.config['backends'][backend])
+                for backend in self.config['backends']
             ]
 
     @staticmethod
     def load_config(config_path):
-        with open(config_path) as config_file:
-            return json.load(config_file)
+        with open(config_path, 'r') as config_file:
+            tmpl = Template(config_file.read())
+            return json.loads(tmpl.substitute(**os.environ))
 
     def save(self, entries):
 

@@ -1,0 +1,9 @@
+{
+    "systemd": {
+        "unit": "$ENV-webserver-$FOO"
+    },
+    "backends": {
+    	"cloudwatch": {
+    	}
+    }
+}

@@ -1,3 +1,4 @@
+import os
 from pytest import fixture
 from unittest.mock import Mock, patch
 
@@ -47,3 +48,12 @@ class TestRunner:
         assert len(runner.loggers) == 2
         assert self.cw_mock.CloudwatchLogger.return_value in runner.loggers
         assert self.es_mock.ElasticsearchLogger.return_value in runner.loggers
+
+    def test_load_config(self):
+        os.environ['ENV'] = 'test'
+        os.environ['FOO'] = 'bar'
+        runner = self.Runner('tests/fixtures/config_vars.json')
+        assert runner.config['systemd']['unit'] == '{}-webserver-{}'.format(
+            os.environ['ENV'],
+            os.environ['FOO']
+        )

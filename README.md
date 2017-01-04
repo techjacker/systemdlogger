@@ -39,7 +39,7 @@ systemdlogger config.json
 -----------------------------------------------------------
 ## Config
 
-Full example [config](tests/fixtures/config.json) with extra optional properties.
+[Full example config](tests/fixtures/config.json) that includes extra optional properties.
 
 #### Example Cloudwatch Config - just required properties
 
@@ -57,30 +57,50 @@ Full example [config](tests/fixtures/config.json) with extra optional properties
 }
 ```
 
-#### Example ElasticSearch & Cloudwatch Config - just required properties
+#### Environment Variable Interpolation
+
+Environment variables will be interpolated when the config is loaded.
+
+```ENV=uat FOO=bar systemdlogger config.json```
 
 ```JavaScript
+// config.json
 {
     "systemd": {
         "unit": "webserver"
     },
     "backends": {
         "cloudwatch": {
-            "log_group_name": "log_group_name",
-            "log_stream_name": "log_stream_name"
-        },
-        "elasticsearch": {
-            "doctype": "webserver",
-            "hosts": ["localhost"]
+            "log_group_name": "$ENV-myapp",
+            "log_stream_name": "$FOO-myservice"
         }
     }
 }
 ```
 
+Is loaded as:
+
+```JavaScript
+        ...
+        "cloudwatch": {
+            "log_group_name": "uat-myapp",
+            "log_stream_name": "bar-myservice"
+        }
+```JavaScript
+
 
 
 -----------------------------------------------------------
+## Elasticseach Backend
 
+Creates daily indexes for logs, eg:
+```
+16-08-25-logs
+16-08-26-logs
+```
+
+
+-----------------------------------------------------------
 ## Development Setup
 
 ```

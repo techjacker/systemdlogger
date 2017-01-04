@@ -15,7 +15,7 @@ class JournalExporter:
     def set_cursor_filepath(filepath, unit):
         return filepath if filepath else os.path.join(
             os.getcwd(),
-            'cursor-%s.txt' % unit
+            'journal-cursor-%s.txt' % unit
         )
 
     def get_entries(self):
