@@ -23,8 +23,6 @@ class CloudwatchLogger(AWSLogger, PluginBase):
         self.instance_id = self.get_instance_id()
         self.log_group_name = log_group_name
         self.log_stream_name = '%s-%s' % (log_stream_name, self.instance_id)
-        # self.log_group_name = '%s-%s' % (project, env)
-        # self.log_stream_name = '%s-%s' % (app, self.instance_id)
 
         try:
             self.client.create_log_group(logGroupName=self.log_group_name)
@@ -63,7 +61,6 @@ class CloudwatchLogger(AWSLogger, PluginBase):
         return '0'
 
     def set_last_token(self, token):
-        log('token', token)
         with open(self.seq_token_path, 'w') as store:
             store.write(token)
 
@@ -74,20 +71,12 @@ class CloudwatchLogger(AWSLogger, PluginBase):
             'message': str(entry['MESSAGE'])
         } for entry in entries]
 
-    # data = [
-    #     {
-    #         'timestamp': int(time.time()) * 1000,
-    #         'message': 'fourth'
-    #     }
-    # ]
     def save(self, data):
         token = self.get_last_token()
-        log('AWS token: ', token)
         response = self.client.put_log_events(
             logGroupName=self.log_group_name,
             logStreamName=self.log_stream_name,
             logEvents=self.create_payload(data),
             sequenceToken=token
         )
-        log('response', response)
         return response

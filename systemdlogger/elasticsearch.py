@@ -45,6 +45,4 @@ class ElasticsearchLogger(PluginBase):
             )
             results.append(es_log.save())
 
-        # Display cluster health
-        # print(connections.get_connection().cluster.health())
         return results
