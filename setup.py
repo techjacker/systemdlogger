@@ -5,10 +5,19 @@ with open('README.rst') as f:
 
 setup(
     name='systemdlogger',
-    version='0.2.0',
+    version='0.2.1',
     description='Exports systemd logs to cloudwatch/elasticsearch.',
     long_description=long_description,
     url='https://github.com/techjacker/systemdlogger',
+    install_requires=[
+        "boto3>=1.4.3",
+        "botocore>=1.4.92",
+        "elasticsearch-dsl>=2.0.0,<3.0.0",
+        "requests>=2.12.4"
+    ],
+    tests_require=[
+        'pytest'
+    ],
     license='MIT',
     author='Andrew Griffiths',
     author_email='mail@andrewgriffithsonline.com',
