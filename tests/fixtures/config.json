@@ -1,7 +1,7 @@
 {
     "systemd": {
         "unit": "webserver",
-        "journal_cursor_filepath": "/optional/path/to/file.txt"
+        "cursor_filepath": "/optional/path/to/file.txt"
     },
     "backends": {
         "cloudwatch": {

@@ -46,7 +46,7 @@ class TestInitCloudwatch:
         assert issubclass(CloudwatchLogger, AWSLogger)
         assert isinstance(cloudwatch_logger, AWSLogger)
         self.AWSLogger.__init__.assert_called_once_with(
-            'cloudwatch',
+            'logs',
             init_params.get('aws_params', {})
         )
         self.CloudwatchLogger.setup_logs.assert_called_once_with(

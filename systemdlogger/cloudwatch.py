@@ -14,7 +14,7 @@ class CloudwatchLogger(AWSLogger, PluginBase):
         log_stream_name,
         aws_params={}
     ):
-        super().__init__('cloudwatch', aws_params)
+        super().__init__('logs', aws_params)
         self.setup_logs(seq_tok_filepath, log_group_name, log_stream_name)
 
     def setup_logs(self, seq_tok_filepath, log_group_name, log_stream_name):

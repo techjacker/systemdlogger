@@ -22,7 +22,7 @@ def metadata():
 
 
 allowed_services = [
-    'cloudwatch'
+    'logs'
 ]
 
 

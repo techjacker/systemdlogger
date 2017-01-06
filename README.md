@@ -27,7 +27,26 @@ $ apt-get install python-systemd python3-systemd
 -----------------------------------------------------------
 ## Usage
 
+```Shell
+$ systemdlogger -h
+usage: systemdlogger [-h] config
+
+Exports systemd logs to different storage backends, eg
+cloudwatch/elasticsearch.
+
+positional arguments:
+  config      path to config file
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+#### Example usage
+
+See example config files below.
+
 ```$ systemdlogger config.json```
+
 
 #### Recommended Usage - Cron Job Runing Every Minute
 

@@ -6,7 +6,7 @@ from systemdlogger.log import log
 
 class AWSLogger():
 
-    services = ['cloudwatch']
+    services = ['logs']
     metadata_url = (
         'http://169.254.169.254'
         '/latest/dynamic/instance-identity/document'
@@ -20,7 +20,7 @@ class AWSLogger():
         self.metadata = self.load_metadata()
         self.client = self.create_client(**aws_params)
 
-    def create_client(self, access_key, secret_key, region):
+    def create_client(self, access_key='', secret_key='', region=''):
         if access_key and secret_key and region:
                 self.session = self.create_session(
                     access_key=access_key,

@@ -18,6 +18,10 @@ class JournalExporter:
             'journal-cursor-%s.txt' % unit
         )
 
+    def get_entry(self, entry):
+        self.cursor_last = entry['__CURSOR']
+        return entry
+
     def get_entries(self):
         cursor_first = None
         try:
@@ -32,9 +36,8 @@ class JournalExporter:
             if e.errno == errno.ENOENT:
                 self.journal.seek_head()
 
-        self.cursor_last = self.journal[-1]['__CURSOR']
-        # entries = [self.create_aws_payload(entry) for entry in self.journal]
-        return self.journal[1:] if cursor_first is not None else self.journal
+        entries = [self.get_entry(entry) for entry in self.journal]
+        return entries[1:] if cursor_first is not None else entries
 
     def set_cursor(self, entries):
         with open(self.cursor_filepath, 'w') as store:
