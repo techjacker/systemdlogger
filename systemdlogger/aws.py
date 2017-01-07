@@ -4,22 +4,37 @@ from boto3.session import Session
 from systemdlogger.log import log
 
 
-class AWSLogger():
+class AWSDefaults():
 
-    services = ['logs']
-    metadata_url = (
+    SERVICES = ['logs']
+    METADATA_URL = (
         'http://169.254.169.254'
         '/latest/dynamic/instance-identity/document'
     )
+    CREDS = {
+        'access_key': '',
+        'secret_key': '',
+        'region': ''
+    }
 
-    def __init__(self, aws_service, aws_params={}):
-        if aws_service not in AWSLogger.services:
-            raise Exception('logger must be one of %s' % AWSLogger.services)
+
+class AWSLogger(AWSDefaults):
+
+    def __init__(self, aws_service, aws_params=AWSDefaults.CREDS):
+        if aws_service not in AWSDefaults.SERVICES:
+            raise Exception(
+                'logger must be one of %s'.format(AWSDefaults.SERVICES)
+            )
         self.aws_service = aws_service
         self.metadata = self.load_metadata()
         self.client = self.create_client(**aws_params)
 
-    def create_client(self, access_key='', secret_key='', region=''):
+    def create_client(
+        self,
+        access_key=AWSDefaults.CREDS['access_key'],
+        secret_key=AWSDefaults.CREDS['secret_key'],
+        region=AWSDefaults.CREDS['region']
+    ):
         if access_key and secret_key and region:
                 self.session = self.create_session(
                     access_key=access_key,
@@ -42,7 +57,7 @@ class AWSLogger():
 
     def load_metadata(self):
         try:
-            response = requests.get(AWSLogger.metadata_url)
+            response = requests.get(AWSDefaults.METADATA_URL)
             return response.json()
         # assume we are testing locally if not on ec2
         except Exception as e:

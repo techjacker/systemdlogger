@@ -50,7 +50,7 @@ See example config files below.
 
 #### Recommended Usage - Cron Job Runing Every Minute
 
-```*/1 * * * * . /etc/webserver.env; systemdlogger config.json >/logs/systemdlogger.log 2>&1```
+```*/1 * * * * . /etc/webserver.env; export ENV=$NODE_ENV; /usr/local/bin/systemdlogger /path/to/config.json >/etc/logs/systemdlogger.log 2>&1```
 
 
 -----------------------------------------------------------

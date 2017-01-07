@@ -8,7 +8,8 @@ from string import Template
 
 
 class Runner:
-    loggers = {
+
+    LOGGERS = {
         'cloudwatch': CloudwatchLogger,
         'elasticsearch': ElasticsearchLogger
     }
@@ -23,7 +24,7 @@ class Runner:
 
         if len(self.config['backends']):
             self.loggers = [
-                Runner.loggers[backend](**self.config['backends'][backend])
+                Runner.LOGGERS[backend](**self.config['backends'][backend])
                 for backend in self.config['backends']
             ]
 
