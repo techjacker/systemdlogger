@@ -129,11 +129,24 @@ Is loaded as:
 -----------------------------------------------------------
 ## Elasticseach Backend
 
-Creates daily indexes for logs, eg:
+Creates daily indexes for logs in ```logs-YYYY-MM-DD``` format, eg:
 ```
-16-08-25-logs
-16-08-26-logs
+logs-16-08-25
+logs-16-08-26
 ```
+
+### Kibana Setup
+
+Configure Kibana index pattern:
+
+- Go to Kibana index settings URL eg, ```http://<your_elasticsearch_domain>/_plugin/kibana/#/settings/indices/?_g=()```
+- Select both checkboxes.
+- Set 'Index pattern interval' to 'Daily'
+- Enter '[logs-]YYYY-MM-DD' for the index name
+- Select 'timestamp' for the timestamp field
+- Click on 'Create'
+
+![Kibana Index Setup](docs/kibana_index_setup.png?raw=true "Kibana Index Setup")
 
 
 -----------------------------------------------------------
