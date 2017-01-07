@@ -76,7 +76,7 @@ See example config files below.
 
 #### Example Elasticsearch Config - just required properties
 
-If the elasticsearch endpoint does not use port ```9200``` you need to explicitly state it as shown below:
+If the elasticsearch endpoint does not use port `9200` you need to explicitly state it as shown below:
 
 ```JavaScript
 {
@@ -129,7 +129,7 @@ Is loaded as:
 -----------------------------------------------------------
 ## Elasticseach Backend
 
-Creates daily indexes for logs in ```logs-YYYY-MM-DD``` format, eg:
+Creates daily indexes for logs in `logs-YYYY-MM-DD` format, eg:
 ```
 logs-16-08-25
 logs-16-08-26
@@ -139,12 +139,12 @@ logs-16-08-26
 
 Configure Kibana index pattern:
 
-- Go to Kibana index settings URL eg, ```http://<your_elasticsearch_domain>/_plugin/kibana/#/settings/indices/?_g=()```
+- Go to Kibana index settings URL eg, `http://<your_elasticsearch_domain>/_plugin/kibana/#/settings/indices/?_g=()`
 - Select both checkboxes.
-- Set 'Index pattern interval' to 'Daily'
-- Enter '[logs-]YYYY-MM-DD' for the index name
-- Select 'timestamp' for the timestamp field
-- Click on 'Create'
+- Set `Index pattern interval` to `Daily`
+- Enter `[logs-]YYYY-MM-DD` for the index name
+- Select `timestamp` for the timestamp field
+- Click on `Create`
 
 ![Kibana Index Setup](docs/kibana_index_setup.png?raw=true "Kibana Index Setup")
 
