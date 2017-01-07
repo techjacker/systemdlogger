@@ -74,6 +74,25 @@ See example config files below.
 }
 ```
 
+#### Example Elasticsearch Config - just required properties
+
+If the elasticsearch endpoint does not use port ```9200``` you need to explicitly state it as shown below:
+
+```JavaScript
+{
+    "systemd": {
+        "unit": "webserver"
+    },
+    "backends": {
+        "elasticsearch": {
+            "doctype": "webserver",
+            "hosts": ["search-applogs-blahiy7jyhmqwerfnrfg9trdz4.eu-west-1.es.amazonaws.com:80"]
+        }
+    }
+}
+```
+
+
 #### Environment Variable Interpolation
 
 Environment variables will be interpolated when the config is loaded.
