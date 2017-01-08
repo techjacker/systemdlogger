@@ -125,6 +125,14 @@ Is loaded as:
 ```
 
 
+-----------------------------------------------------------
+## Cloudwatch Backend
+
+Appends EC2 instance id to logstream name, eg:
+
+```
+Log Groups > webapp-uat > webapp-i-06e2a5d847e0d532f
+```
 
 -----------------------------------------------------------
 ## Elasticseach Backend
