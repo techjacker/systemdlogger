@@ -1,7 +1,8 @@
 # systemdlogger
 
-- Exports systemd logs to an external service, eg cloudwatch, elasticsearch.
-- Use with a cron job.
+- Lightweight, python only, logstash alternative
+- Exports systemd journald logs to an external service, eg cloudwatch, elasticsearch
+- Use with a cron job
 - Python 3+
 
 
