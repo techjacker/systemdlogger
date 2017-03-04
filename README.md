@@ -5,6 +5,7 @@
 - Use with a cron job
 - Python 3+
 
+[![Build Status](https://travis-ci.org/techjacker/systemdlogger.svg?branch=master)](https://travis-ci.org/techjacker/systemdlogger)
 
 -----------------------------------------------------------
 ## Installation
