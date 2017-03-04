@@ -171,6 +171,10 @@ $ make deps
 
 ## Unit Tests
 
+#### Install dependencies
+```$ pip install -r requirements.txt```
+
+#### Run Tests
 ```$ make test```
 
 -----------------------------------------------------------
