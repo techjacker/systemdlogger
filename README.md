@@ -1,11 +1,11 @@
+[![Build Status](https://travis-ci.org/techjacker/systemdlogger.svg?branch=master)](https://travis-ci.org/techjacker/systemdlogger)
+
 # systemdlogger
 
 - Lightweight, python only, logstash alternative
 - Exports systemd journald logs to an external service, eg cloudwatch, elasticsearch
 - Use with a cron job
-- Python 3+
-
-[![Build Status](https://travis-ci.org/techjacker/systemdlogger.svg?branch=master)](https://travis-ci.org/techjacker/systemdlogger)
+- Python 3.4+
 
 -----------------------------------------------------------
 ## Installation
